@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Car Rental System - Login & Sign Up</title>
+    <title>Login - Car Rental System</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
@@ -20,131 +20,49 @@
           />
           <div class="login-overlay"></div>
         </div>
-
         <div class="login-box">
           <div class="login-header">
             <i class="fas fa-car-side"></i>
             <h1>Car Rental System</h1>
-            <p id="form-title">Welcome back! Please login to your account.</p>
+            <p>Welcome back! Please login to your account.</p>
           </div>
-
-          <!-- LOGIN FORM -->
           <form id="loginForm" onsubmit="return validateLogin(event)">
             <div class="input-group">
-              <label for="login-username">
-                <i class="fas fa-user"></i> Username
+              <label for="username">
+                <i class="fas fa-user"></i>
+                Username
               </label>
               <input
                 type="text"
-                id="login-username"
+                id="username"
                 required
                 placeholder="Enter your username"
               />
             </div>
             <div class="input-group">
-              <label for="login-password">
-                <i class="fas fa-lock"></i> Password
+              <label for="password">
+                <i class="fas fa-lock"></i>
+                Password
               </label>
               <input
                 type="password"
-                id="login-password"
+                id="password"
                 required
                 placeholder="Enter your password"
               />
             </div>
             <button type="submit" class="login-btn">
-              <i class="fas fa-sign-in-alt"></i> Login
+              <i class="fas fa-sign-in-alt"></i>
+              Login
             </button>
-            <p class="toggle-form">
-              New here? <a href="#" onclick="toggleForms()">Sign up</a>
-            </p>
           </form>
-
-          <!-- SIGNUP FORM -->
-          <form id="signupForm" onsubmit="return registerUser(event)" style="display: none;">
-            <div class="input-group">
-              <label for="signup-username">
-                <i class="fas fa-user-plus"></i> Username
-              </label>
-              <input
-                type="text"
-                id="signup-username"
-                required
-                placeholder="Choose a username"
-              />
-            </div>
-            <div class="input-group">
-              <label for="signup-password">
-                <i class="fas fa-lock"></i> Password
-              </label>
-              <input
-                type="password"
-                id="signup-password"
-                required
-                placeholder="Choose a password"
-              />
-            </div>
-            <button type="submit" class="login-btn">
-              <i class="fas fa-user-plus"></i> Sign Up
-            </button>
-            <p class="toggle-form">
-              Already have an account? <a href="#" onclick="toggleForms()">Login</a>
-            </p>
-          </form>
+          <!-- <div class="login-footer">
+            <p>Demo Credentials:</p>
+            <p>Username: admin | Password: admin</p>
+          </div> -->
         </div>
       </div>
     </div>
-
-    <script>
-      // Toggle between Login and Signup forms
-      function toggleForms() {
-        const loginForm = document.getElementById("loginForm");
-        const signupForm = document.getElementById("signupForm");
-        const formTitle = document.getElementById("form-title");
-
-        if (loginForm.style.display === "none") {
-          loginForm.style.display = "block";
-          signupForm.style.display = "none";
-          formTitle.textContent = "Welcome back! Please login to your account.";
-        } else {
-          loginForm.style.display = "none";
-          signupForm.style.display = "block";
-          formTitle.textContent = "Create a new account.";
-        }
-      }
-
-      // Register a new user
-      function registerUser(event) {
-        event.preventDefault();
-        const username = document.getElementById("signup-username").value;
-        const password = document.getElementById("signup-password").value;
-
-        if (localStorage.getItem(username)) {
-          alert("Username already exists. Please choose another.");
-          return false;
-        }
-
-        localStorage.setItem(username, password);
-        alert("Registration successful! You can now log in.");
-        toggleForms();
-        return false;
-      }
-
-      // Validate login
-      function validateLogin(event) {
-        event.preventDefault();
-        const username = document.getElementById("login-username").value;
-        const password = document.getElementById("login-password").value;
-
-        const storedPassword = localStorage.getItem(username);
-        if (storedPassword === password) {
-          alert("Login successful! Redirecting...");
-          window.location.href = "index.html"; 
-        } else {
-          alert("Invalid username or password.");
-        }
-        return false;
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
